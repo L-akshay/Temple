@@ -74,19 +74,27 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      {/* ── Season legend ── */}
-      <div className="stats-bar">
+      {/* ── Season showcase strip ── */}
+      <div className="season-strip">
         <div className="container">
-          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center', padding: '0.25rem 0' }}>
-            {(['春','夏','秋','冬'] as const).map((s) => (
-              <div key={s} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: seasonColor[s], flexShrink: 0, display: 'inline-block' }} />
-                <span style={{ fontSize: '0.85rem', color: 'hsl(353,15%,70%)', fontWeight: 600 }}>{s}</span>
+          <div className="season-strip__grid">
+            {[
+              { kanji: '春', en: 'Spring', months: '3月 — 4月', color: 'hsl(350,80%,65%)', img: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=75&auto=format&fit=crop' },
+              { kanji: '夏', en: 'Summer', months: '6月 — 8月', color: 'hsl(160,60%,45%)', img: 'https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=600&q=75&auto=format&fit=crop' },
+              { kanji: '秋', en: 'Autumn', months: '10月 — 11月', color: 'hsl(25,80%,55%)',  img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=75&auto=format&fit=crop' },
+              { kanji: '冬', en: 'Winter', months: '12月 — 2月', color: 'hsl(210,60%,65%)', img: 'https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=600&q=75&auto=format&fit=crop' },
+            ].map((s) => (
+              <div key={s.kanji} className="season-strip__card">
+                <img src={s.img} alt={s.en} className="season-strip__img" loading="lazy" />
+                <div className="season-strip__overlay" />
+                <div className="season-strip__dot" style={{ background: s.color }} />
+                <div className="season-strip__text">
+                  <span className="season-strip__kanji">{s.kanji}</span>
+                  <span className="season-strip__en">{s.en}</span>
+                  <span className="season-strip__months">{s.months}</span>
+                </div>
               </div>
             ))}
-            <span style={{ fontSize: '0.78rem', color: 'hsl(353,15%,40%)', alignSelf: 'center' }}>
-              Photos via <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--first-color-alt)' }}>Unsplash</a>
-            </span>
           </div>
         </div>
       </div>
