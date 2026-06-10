@@ -103,9 +103,6 @@ export default function AboutPage() {
                   <img src={ABOUT_SM2} alt="境内の自然" className="about__photo-sm" />
                 </div>
               </div>
-              <p className="about__photo-credit">
-                Photo: <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>
-              </p>
             </div>
 
           </div>

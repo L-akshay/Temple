@@ -36,7 +36,7 @@ const items = [
   },
   {
     season: '秋', label: '金色の銀杏',   sub: '11月初旬',
-    img: 'https://images.unsplash.com/photo-1580714150833-9d5c0b5c8e5e?w=800&q=75&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=75&auto=format&fit=crop',
     desc: '黄金色に輝く境内',
   },
   {

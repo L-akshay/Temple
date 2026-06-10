@@ -88,8 +88,7 @@ export default function EventsPage() {
       <section className="section" style={{ paddingTop: '4rem' }}>
         <div className="container">
           <div className="events__grid--photo">
-            {events.map((ev, i) => (
-              <div
+            {events.map((ev, i) => (              <div
                 key={i}
                 className={`events__card--photo anim-fadeup anim-d${i + 1}`}
                 data-season={ev.season}
@@ -122,9 +121,7 @@ export default function EventsPage() {
               </div>
             ))}
           </div>
-          <p style={{ textAlign: 'center', marginTop: '2.5rem', fontSize: '0.75rem', color: 'hsl(353,15%,38%)' }}>
-            Photos via <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--first-color-alt)' }}>Unsplash</a>
-          </p>
+
         </div>
       </section>
     </div>
