@@ -65,6 +65,45 @@ img {
   left: 0;
   background-color: transparent;
   z-index: var(--z-fixed);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Inner pages — always dark solid nav */
+.header--inner {
+  background-color: hsla(353, 90%, 5%, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid hsla(353, 50%, 25%, 0.35);
+}
+
+.header--inner .nav__logo,
+.header--inner .nav__link,
+.header--inner .nav__toggle,
+.header--inner .nav__close {
+  color: hsl(0, 0%, 95%);
+}
+
+.header--inner .nav__link:hover {
+  color: var(--first-color);
+}
+
+/* Home page blur — triggered by scroll */
+.blur-header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(353, 98%, 90%, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Inner page scroll — just deepen the dark bg slightly */
+.header--inner.blur-header::after {
+  background-color: hsla(353, 90%, 4%, 0.6);
 }
 
 .nav {
@@ -105,6 +144,14 @@ img {
     box-shadow: 0 4px 24px hsla(353, 90%, 4%, 0.2);
     transition: top 0.4s;
   }
+
+  /* Dark mobile menu on inner pages */
+  .header--inner .nav__menu {
+    background-color: hsla(353, 90%, 5%, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 32px hsla(353, 90%, 3%, 0.5);
+  }
 }
 
 .nav__list {
@@ -126,7 +173,12 @@ img {
   right: 1.5rem;
 }
 
-.show-menu { top: 0; }
+.show-menu {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
 .blur-header::after {
   content: "";
@@ -1574,6 +1626,7 @@ img {
   border-collapse: collapse;
   border-radius: 0.75rem;
   overflow: hidden;
+  table-layout: fixed;
 }
 
 .legal-table-v2 tr {
@@ -1603,10 +1656,58 @@ img {
 .legal-table-v2 td {
   color: hsl(353, 10%, 75%);
   line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .legal-table-v2 tr:last-child th,
 .legal-table-v2 tr:last-child td { border-bottom: none; }
+
+@media screen and (max-width: 575px) {
+  .static-page-v2__body {
+    padding-top: 2rem;
+  }
+
+  .legal-table-v2,
+  .legal-table-v2 tbody,
+  .legal-table-v2 tr,
+  .legal-table-v2 th,
+  .legal-table-v2 td {
+    display: block;
+    width: 100%;
+  }
+
+  .legal-table-v2 {
+    border-radius: 0.65rem;
+  }
+
+  .legal-table-v2 tr {
+    padding: 0.95rem 1rem;
+    background-color: hsla(353, 50%, 8%, 0.35);
+    border-bottom: 1px solid hsla(353, 50%, 18%, 0.35);
+  }
+
+  .legal-table-v2 tr:last-child {
+    border-bottom: none;
+  }
+
+  .legal-table-v2 th,
+  .legal-table-v2 td {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .legal-table-v2 th {
+    margin-bottom: 0.35rem;
+    white-space: normal;
+    background-color: transparent;
+    font-size: 0.78rem;
+  }
+
+  .legal-table-v2 td {
+    font-size: 0.86rem;
+  }
+}
 
 @media screen and (min-width: 1150px) {
   .static-page-v2__grid {

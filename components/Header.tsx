@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useRef } from 'react'
 
 const navItems = [
@@ -13,12 +14,14 @@ const navItems = [
 
 export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   const openMenu  = () => menuRef.current?.classList.add('show-menu')
   const closeMenu = () => menuRef.current?.classList.remove('show-menu')
 
   return (
-    <header className="header" id="header">
+    <header className={`header${isHome ? '' : ' header--inner'}`} id="header">
       <nav className="nav container">
         <Link href="/" className="nav__logo">
           <i className="ri-ancient-gate-line" />
